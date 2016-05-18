@@ -77,3 +77,7 @@ class TestLanguageDetector(unittest.TestCase):
         """
         result = detect_language(text, self.languages)
         self.assertEqual(result, 'Spanish')
+
+
+if __name__ == '__main__':
+    unittest.main()  
