@@ -98,7 +98,7 @@ class TestLanguageDetector(unittest.TestCase):
             A giant dog chased seven cats.
         """
         result = detect_language(text, self.languages)
-        self.assertEqual(result, ['Spanish', 'English'])
+        self.assertEqual(result, {'Spanish', 'English'})
 
 
 if __name__ == '__main__':

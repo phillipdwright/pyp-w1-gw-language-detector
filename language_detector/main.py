@@ -18,9 +18,9 @@ def detect_language(text, languages):
     # we will use sets to find the shared unique words between the input text and language lists
     word_set = set(text_words)
     
-    # use a dict with key = # matching words and value = list of language names
+    # use a dict with key = # matching words and value = set of language names
     # this is used to return the highest scoring language(s) at the end
-    score_dict = collections.defaultdict(list)
+    score_dict = collections.defaultdict(set)
     
     for language in languages:
         language_words = language['common_words']
@@ -31,16 +31,16 @@ def detect_language(text, languages):
         # take the set intersection to get the common words between input and language list
         common_set = word_set & language_set
         
-        score_dict[len(common_set)].append(language['name'])
+        score_dict[len(common_set)].add(language['name'])
     
-    # get the list of languages that had the top score
+    # get the set of languages that had the top score
     top_languages = score_dict[max(score_dict)]
     
     # if there is a single language with the best score, return that name as a string
     if len(top_languages) == 1:
-        return top_languages[0]
+        return next(iter(top_languages))
     
-    # in case of a tie with multiple languages, return a list of language names    
+    # in case of a tie with multiple languages, return a set of language names    
     return top_languages
         
 # if __name__ == '__main__':
