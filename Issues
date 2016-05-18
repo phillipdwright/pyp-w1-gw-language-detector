@@ -1,9 +1,10 @@
 Primary:
 
 + Clean input by removing unwanted text
-* Split input text into words
-* For each language in our language list, score the language
-* Return the language with the highest score
++ Split input text into words
++ For each language in our language list, score the language
++ Return the language with the highest score
 
 Secondary:
-* Encoding of list in LANGUAGES vs encoding of input
+
++ Encoding of list in LANGUAGES vs encoding of input
