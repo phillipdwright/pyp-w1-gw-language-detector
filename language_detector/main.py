@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """This is the entry point of the program."""
 
-from .languages import LANGUAGES
+from languages import LANGUAGES
 import string
 import collections
+import re
 
 # languages = [{'name':"spanish",'common_words':'['el',...]}, {'name':"english",...}]
 
@@ -11,7 +12,8 @@ def detect_language(text, languages):
     """Returns the detected language of given text."""
     
     # remove any punctuation and convert input text to lowercase
-    clean_text = text.translate(None, string.punctuation)
+    bad_chars = '[' + string.punctuation + ']'
+    clean_text = re.sub(bad_chars, '', text)
     clean_text = clean_text.lower()
     text_words = clean_text.split()
     
@@ -55,4 +57,5 @@ def detect_language(text, languages):
 #     text = """
 #         A giant dog chased seven cats.
 #         """
-#     detect_language(text,LANGUAGES)  
+#     print(detect_language(text,LANGUAGES))
+    
